@@ -22,9 +22,9 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo write definitions file...
-      - printf '[{"name":"apant0597-ecr-codebuild","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"apant0597-ecr-codebuild","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions-$CODEBUILD_BUILD_NUMBER.json
 artifacts:
-  files: imagedefinitions.json
+  files: imagedefinitions-$CODEBUILD_BUILD_NUMBER.json
 
 env:
   variables:
